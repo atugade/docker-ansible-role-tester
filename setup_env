@@ -1,0 +1,6 @@
+export HIPOPS=${PWD}
+export ANSIBLE_DIR=${HIPOPS}/ansible
+export ANSIBLE_HOST_KEY_CHECKING=False
+
+make -C "$HIPOPS"
+. "$HIPOPS"/venv/bin/activate

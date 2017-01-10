@@ -1,0 +1,22 @@
+#
+# ansible-playbook docker-ansible-test.yml -i "127.0.0.1" -vvvv --ask-pass
+#
+# If need be, root password to containers is "docker.io"
+#
+# To inspect, login directly to the container via docker:
+#
+# docker exec -i -t <container_name> /bin/bash
+#
+---
+- name: Bring up role inspector container
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: false
+  vars:
+    inventory:
+    - name: role_tester
+      image: "base:latest"
+  roles:
+  - { role: docker_build_image }
+#  - { role: provision_docker, provision_docker_inventory_group: "{{ inventory }}" }

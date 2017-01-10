@@ -1,0 +1,4 @@
+---
+py_packages:
+- name: docker-py
+  version: 1.7.0

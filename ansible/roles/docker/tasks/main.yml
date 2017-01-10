@@ -1,0 +1,10 @@
+---
+- name: Create docker group
+  group: name=docker state=present
+
+- name: Add vagrant user to docker group
+  user: name=vagrant group=docker
+
+- name: Install docker
+  yum: name=docker state=present
+  notify: restart docker
