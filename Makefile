@@ -5,7 +5,7 @@ $(HIPOPS)/venv: requirements.txt
 	. $(HIPOPS)/venv/bin/activate
 	pip install wheel
 	pip wheel -w $(HIPOPS)/wheelhouse -r requirements.txt
-	pip install -r requirements.txt --find-links=$(PWD)/wheelhouse
+	pip install -r requirements.txt --find-links=$(HIPOPS)/wheelhouse
 
 clean:
 	rm -rf $(HIPOPS)/venv
