@@ -1,5 +1,5 @@
 #
-# ansible-playbook docker-ansible-test.yml -i "127.0.0.1" -vvvv --ask-pass
+# ansible-playbook docker-ansible-test.yml
 #
 # If need be, root password to containers is "docker.io"
 #
