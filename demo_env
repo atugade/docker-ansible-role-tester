@@ -2,5 +2,5 @@ export HIPOPS=${PWD}
 export ANSIBLE_DIR=${HIPOPS}/ansible
 export ANSIBLE_HOST_KEY_CHECKING=False
 
-make -C "$HIPOPS" -f Makefile.setup
-. "$HIPOPS"/setup_venv/bin/activate
+make -C "$HIPOPS" -f Makefile.demo
+. "$HIPOPS"/demo_venv/bin/activate

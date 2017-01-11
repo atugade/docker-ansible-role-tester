@@ -19,4 +19,4 @@
       image: "base:latest"
   roles:
   - { role: docker_build_image }
-#  - { role: provision_docker, provision_docker_inventory_group: "{{ inventory }}" }
+  - { role: provision_containers, provision_docker_inventory_group: "{{ inventory }}" }
