@@ -1,0 +1,15 @@
+all: $(HIPOPS)/venv
+
+$(HIPOPS)/venv: requirements.txt
+	{ \
+	virtualenv demo_venv ;\
+	. $(HIPOPS)/demo_venv/bin/activate ;\
+	pip install wheel ;\
+	pip wheel -w $(HIPOPS)/wheelhouse -r requirements.txt ;\
+	pip install -r requirements.txt --find-links=$(HIPOPS)/wheelhouse ;\
+	cd ansible ;\
+	ansible-playbook docker-ansible-test.yml ;\
+	}
+
+clean:
+	rm -rf $(HIPOPS)/demo_venv

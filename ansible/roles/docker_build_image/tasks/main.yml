@@ -4,5 +4,5 @@
 # docker build -t test:latest .
 #
 ---
-- name: Build image
-  docker_image: name=test tag=latest path="{{ role_path }}/files/centos7/"
+- name: Build base image
+  docker_image: name=base tag=latest path="{{ role_path }}/files/centos7/"

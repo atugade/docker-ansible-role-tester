@@ -1,0 +1,15 @@
+all: $(HIPOPS)/venv
+
+$(HIPOPS)/venv: requirements.txt
+	{ \
+	virtualenv setup_venv ;\
+	. $(HIPOPS)/setup_venv/bin/activate ;\
+	pip install wheel ;\
+	pip wheel -w $(HIPOPS)/wheelhouse -r requirements.txt ;\
+	pip install -r requirements.txt --find-links=$(HIPOPS)/wheelhouse ;\
+	vagrant up ;\
+	}
+
+clean:
+	rm -rf $(HIPOPS)/setup_venv
+	vagrant destroy -f

@@ -1,0 +1,25 @@
+---
+- name: "Provision docker container(s)"
+  local_action:
+    module: docker_container
+    name: "{{ item['name'] }}"
+    image: "{{ item['image'] }}"
+    hostname: "{{ item['name'] }}"
+    state: started
+    privileged: true
+    exposed_ports:
+    - 80
+  with_items: "{{ provision_docker_inventory_group }}"
+
+- name: Get IP of container
+  local_action:
+    module: "shell"
+    args: "{{ role_path }}/files/docker_inspect.sh {{ item['name'] }}"
+  register: provision_docker_ip
+  with_items: "{{ provision_docker_inventory_group }}"
+  changed_when: false
+
+- name: Add ips to group
+  add_host: name={{ item.item.name }} groups=just_created
+  with_items: "{{ provision_docker_ip.results }}"
+  changed_when: false
