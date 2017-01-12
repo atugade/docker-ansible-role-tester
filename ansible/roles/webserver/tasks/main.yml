@@ -1,0 +1,12 @@
+---
+- name: Install httpd
+  yum: pkg={{ item }} state=present
+  with_items:
+  - httpd
+
+- name: Create placeholder index.html in default DocumentRoot
+  copy: content="OK" dest=/var/www/html/index.html
+
+- name: Make sure httpd is started and enabled
+  service: name=httpd enabled=true
+  notify: restart httpd

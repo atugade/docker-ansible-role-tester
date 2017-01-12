@@ -17,3 +17,11 @@ vagrant ssh
 cd /vagrant
 . demo_env
 ```
+
+At this point there should be a docker container running that has had an ansible role applied to it.  You can inspect the container as you normally would.  Clean up with the following commands:
+
+```
+make clean -f Makefile.demo
+exit
+make clean -f Makefile.setup
+```

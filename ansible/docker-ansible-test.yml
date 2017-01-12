@@ -20,3 +20,9 @@
   roles:
   - { role: docker_build_image }
   - { role: provision_containers, provision_docker_inventory_group: "{{ inventory }}" }
+
+- name: Apply webserver role to container
+  hosts: just_created
+  connection: docker
+  roles:
+  - webserver
